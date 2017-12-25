@@ -1,0 +1,36 @@
+-------------------------
+USUARIO (Tiene un perfil asociado)
+-------------------------
+*Correo
+*Contraseña
+*Nombre
+*Edad
+-------------------------
+
+-------------------------
+COMENTARIO (Pertenece a un usuario y a un viaje, puede tener varias RESPUESTA)
+-------------------------
+*Título
+*Cuerpo
+*FechaPublicación
+
+RESPUESTA es un COMENTARIO
+-------------------------
+
+-------------------------
+VIAJE (Pertenece a un usuario, puede tener comentarios y posts)
+-------------------------
+*Desde dónde
+*Hasta dónde
+*Fecha ida
+*Fecha vuelta
+-------------------------
+
+-------------------------
+POST (Pertenece a un viaje, puede tener una imagen)
+-------------------------
+*Título
+*Cuerpo
+-------------------------
+
+
