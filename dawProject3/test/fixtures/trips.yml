@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from: MyString
+  where: MyString
+  start_date: 2017-12-26
+  final_date: 2017-12-26
+
+two:
+  from: MyString
+  where: MyString
+  start_date: 2017-12-26
+  final_date: 2017-12-26
