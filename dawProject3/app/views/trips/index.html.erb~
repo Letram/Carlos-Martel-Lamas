@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% if logged_in? %>
+    <% if current_user.logged_in? %>
 	    <% @trips.each do |trip| %>
 	      <% if trip.owned_by? current_user%>
 			  <tr>
