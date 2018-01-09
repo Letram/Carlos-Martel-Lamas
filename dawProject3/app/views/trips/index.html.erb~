@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<%= render "layout/friends"%>
 <h1>Trips</h1>
 
 <table>
@@ -14,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% if current_user.logged_in? %>
+    <% if logged_in? %>
 	    <% @trips.each do |trip| %>
 	      <% if trip.owned_by? current_user%>
 			  <tr>

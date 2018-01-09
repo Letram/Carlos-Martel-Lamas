@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "trips#index"
   resources :trips do
     resources :comments
+	resources :posts
   end
   resources :users
   resource :session, only: [:new, :create, :destroy]

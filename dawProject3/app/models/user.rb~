@@ -1,6 +1,6 @@
 require 'digest'
 class User < ApplicationRecord
-	attr_accesor :password
+	attr_accessor :password
   	before_save :encrypt_new_password
 	has_one :profile
 	has_many :trips

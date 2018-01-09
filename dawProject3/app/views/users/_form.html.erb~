@@ -1,42 +1,60 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="register-photo">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <form method="post">
+                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <div class="form-group"><input class="form-control" type="text" required="" placeholder="Name "></div>
+                <div class="form-group"><input class="form-control" type="email" name="email" required="" placeholder="Email"></div>
+                <div class="form-group"><input class="form-control" type="password" name="password" required="" placeholder="Password"></div>
+                <div class="form-group"><input class="form-control" type="password" name="password-repeat" required="" placeholder="Repeat password"></div>
+                <div class="form-group">
+                    <div class="checkbox"><label class="control-label"><input type="checkbox" required="">I agree to the license terms.</label></div>
+                </div>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign Up</button></div><a href="#" class="already">You already have an account? Login here.</a></form>
+        </div>
     </div>
-  <% end %>
+<div class="form-container">
+	<%= form_with(model: user, local: true) do |form| %>
+	  <% if user.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :user_email %>
-  </div>
+		  <ul>
+		  <% user.errors.full_messages.each do |message| %>
+		    <li><%= message %></li>
+		  <% end %>
+		  </ul>
+		</div>
+	  <% end %>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password, id: :user_password %>
-  </div>
-  
-    <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, id: :password_confirmation %>
-  </div>
+	  <div class="field form-group">
+		<%= form.label :email %>
+		<%= form.text_field :email, id: :user_email, class:"form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :user_name %>
-  </div>
+	  <div class="field form-group">
+		<%= form.label :name %>
+		<%= form.text_field :name, id: :user_name, class:"form-control" %>
+	  </div>
+	  
+	  <div class="field form-group">
+		<%= form.label :password %>
+		<%= form.password_field :password, id: :user_password, class:"form-control" %>
+	  </div>
+	  
+		<div class="field form-group">
+		<%= form.label :password_confirmation %>
+		<%= form.password_field :password_confirmation, id: :password_confirmation, class:"form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age, id: :user_age %>
-  </div>
+	  <div class="field form-group">
+		<%= form.label :age %>
+		<%= form.number_field :age, id: :user_age, class:"form-control" %>
+	  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+	  <div class="actions form-group">
+		<%= form.submit "Register", class:"btn btn-primary btn-block" %>
+	  </div>
+	<% end %>
+	<%= link_to "Have an account? Login here", login_path %>
+</div>

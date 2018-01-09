@@ -10,7 +10,7 @@ class User < ApplicationRecord
 	#friends
 	has_many :users
 
-	validates :email, uniqueness: {case_sensitive: false, message: 'El correo debe ser único'}, length: {in: 6..20, too_short: "debe tener al menos %{count} caracteres"}, format: {multiline: true,with: /^.+@.+$/, message: "formato de correo no valido"}
+	validates :email, uniqueness: {case_sensitive: false, message: 'El correo debe ser único'}, length: {in: 6..50, too_short: "debe tener al menos %{count} caracteres"}, format: {multiline: true,with: /^.+@.+$/, message: "formato de correo no valido"}
 
   	validates :password, confirmation: true, length: {within: 4..20}, presence: {if: :password_required?}
 	validates :password_confirmation, presence: true

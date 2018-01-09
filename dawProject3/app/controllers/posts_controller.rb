@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	
   before_action :load_trip, except: :destroy
   before_action :authenticate, only: :destroy
   
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = @trip.posts.new(post_params)
 
     respond_to do |format|
       if @post.save
@@ -74,6 +75,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :user_id)
     end
 end
