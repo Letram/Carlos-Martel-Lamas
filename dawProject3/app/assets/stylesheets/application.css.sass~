@@ -15,3 +15,6 @@
  */
 @import "bootstrap-sprockets"
 @import "bootstrap"
+@import "my-css.css"
+@import "variables.css"
+@import "styles.min.css"

@@ -1,0 +1,30 @@
+.description{
+    display:none;
+}
+.description dl,dd,p{
+    color: black;
+}
+
+#moreFriends{
+    display:none;
+}
+
+.voted-up{
+    color:green;
+}
+
+.voted-down{
+    color:darkred;
+}
+
+.avatar{
+    width: 120px;
+    height: 120px;
+}
+
+.icons{
+    color:rgb(0,0,0);
+    font-size:20px;
+    float: right;
+    padding: 0px 10px;
+}

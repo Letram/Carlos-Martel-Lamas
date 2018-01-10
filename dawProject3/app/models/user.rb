@@ -2,11 +2,13 @@ require 'digest'
 class User < ApplicationRecord
 	attr_accessor :password
   	before_save :encrypt_new_password
+	after_create :build_profile	
 	has_one :profile
 	has_many :trips
 	has_many :comments, through: :trips, source: :comments
 	has_many :posts, through: :trips, source: :posts
-
+	
+  	scope :recent_comments, ->{where("comments.created_at > ? AND user_id = ?", [6.months.ago, self.id]).limit(3)}
 	#friends
 	has_many :users
 
@@ -34,5 +36,8 @@ class User < ApplicationRecord
   end
   def encrypt(string)
     Digest::SHA1.hexdigest(string) 
+  end
+  def build_profile
+	Profile.create(user: self, name: self.name, bio:"Im using Tripper!")  
   end
 end

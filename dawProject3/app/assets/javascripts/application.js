@@ -16,4 +16,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require jquery-ui/widgets/datepicker
+//= require scripts
+//= require AnimatedNumberElement
 //= require_tree .
