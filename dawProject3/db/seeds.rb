@@ -5,3 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(
+	[
+		{name: "Usuario 1", email: "usuario1@usuario.com", password:"usuario1", password_confirmation: "usuario1"},
+		{name: "Usuario 2", email: "usuario2@usuario.com", password:"usuario2", password_confirmation: "usuario2"},
+		{name: "Usuario 3", email: "usuario3@usuario.com", password:"usuario3", password_confirmation: "usuario3"},
+		{name: "Usuario 4", email: "usuario4@usuario.com", password:"usuario4", password_confirmation: "usuario4"},
+		{name: "Usuario 5", email: "usuario5@usuario.com", password:"usuario5", password_confirmation: "usuario5"}
+	]
+)
+
+User.all.each do |user|
+	user.trips.create(
+		[
+			{from: "spa", where: "ita"},
+			{from: "ing", where: "usa"},
+			{from: "rus", where: "ger"}
+		]
+	)
+end
