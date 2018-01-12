@@ -1,45 +1,48 @@
 <div class="form-container">
 	<%= form_with(model: user, local: true) do |form| %>
-	  <% if user.errors.any? %>
-		<div id="error_explanation">
-		  <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+	<% if user.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-		  <ul>
-		  <% user.errors.full_messages.each do |message| %>
-		    <li><%= message %></li>
-		  <% end %>
-		  </ul>
-		</div>
-	  <% end %>
+		<ul>
+			<% user.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
 
-	  <div class="field form-group">
+	<div class="field form-group">
 		<%= form.label :email %>
 		<%= form.text_field :email, id: :user_email, class:"form-control" %>
-	  </div>
+	</div>
 
-	  <div class="field form-group">
+	<div class="field form-group">
 		<%= form.label :name %>
 		<%= form.text_field :name, id: :user_name, class:"form-control" %>
-	  </div>
-	  
-	  <div class="field form-group">
+	</div>
+
+	<div class="field form-group">
 		<%= form.label :password %>
 		<%= form.password_field :password, id: :user_password, class:"form-control" %>
-	  </div>
-	  
-		<div class="field form-group">
+	</div>
+
+	<div class="field form-group">
 		<%= form.label :password_confirmation %>
 		<%= form.password_field :password_confirmation, id: :password_confirmation, class:"form-control" %>
-	  </div>
+	</div>
 
-	  <div class="field form-group">
+	<div class="field form-group">
 		<%= form.label :age %>
 		<%= form.number_field :age, id: :user_age, class:"form-control" %>
-	  </div>
+	</div>
 
-	  <div class="actions form-group">
-		<%= form.submit "Register", class:"btn btn-primary btn-block" %>
-	  </div>
+	<div class="field">
+		<%= form.label :profile_pic %>
+		<%= form.file_field :profile_pic, id: :profile_pic %>
+	</div>
+	<div class="actions form-group">
+		<%= form.submit "Actualizar", class:"btn btn-primary btn-block" %>
+	</div>
 	<% end %>
-	<%= link_to "Have an account? Login here", login_path %>
 </div>

@@ -1,24 +1,14 @@
-<p id="notice"><%= notice %></p>
+<%= render  @trip %> 
 
-<p>
-  <strong>From:</strong>
-  <%= @trip.from %>
-</p>
+<h3> POSTS </h3>
+<div  id="posts">
+  <%= render @trip.posts %> 
+</div>
 
-<p>
-  <strong>Where:</strong>
-  <%= @trip.where %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @trip.start_date %>
-</p>
-
-<p>
-  <strong>Final date:</strong>
-  <%= @trip.final_date %>
-</p>
+<% if @trip.owned_by? current_user %>
+	<%= render file:'posts/new' %> 
+<% end %>
 
 <%= link_to 'Edit', edit_trip_path(@trip) %> |
 <%= link_to 'Back', trips_path %>
+

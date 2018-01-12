@@ -1,7 +1,8 @@
 require 'digest'
 class User < ApplicationRecord
+  mount_uploader :profile_pic, ProfilePicUploader
 	attr_accessor :password
-  	before_save :encrypt_new_password
+  before_save :encrypt_new_password
 	after_create :build_profile	
 	has_one :profile
 	has_many :trips

@@ -1,50 +1,78 @@
-<p id="notice"><%= notice %></p>
+<% if logged_in? %>
+    <div style="background-color:rgba(0,0,0,0);">
+        <div class="container" style="background-color:#ffffff;">
+            <div class="row">
+                <div class="col-lg-6 col-md-5" id="trips" style="background-color:#ffffff;">
+                    <div class="row">
+                        <div class="col-md-12" style="width:400px;">
+                         <h1 class="text-center">My trips</h1>
+                         <hr>
+                         <div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" role="tabpanel" id="tab-1">
+                                    <ul class="thread-list" id="trip-list">
+                                       <% (current_user.trips).each_with_index do |trip, index| %>
+                                       <li id='trip<%= Integer(index)+1%>' class="thread" style="color:rgb(0,0,0);">
+                                        <span class="time"><%= trip.created_at.strftime("%b %d")%></span><span class="title" style="color:rgb(180,100,10);"><%= trip.from%> - <%= trip.where%></span>
+                                        <%= link_to 'Show', trip %>
+                                        <%= link_to 'Edit', edit_trip_path(trip) %>
+                                    </li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="tab-2"></div>
+                            <div class="tab-pane" role="tabpanel" id="tab-3"></div>
+                            <div class="tab-pane" role="tabpanel" id="tab-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" style="width:450px;">
+            <h1 class="text-center">Add a trip</h1>
+            <hr>
+            <form>
+                <div class="form-group has-feedback" style="font-size:20px;"><i class="form-control-feedback glyphicon glyphicon-star" aria-hidden="true"></i><label class="control-label show" for="departure_date" style="font-size:20px;">Departure date:</label><input class="form-control show visible-md-inline visible-lg-inline"
+                    type="number" name="departure_day" placeholder="1" min="1" max="31" step="1" style="width:20%;"><input class="form-control show visible-md-inline visible-lg-inline" type="month" name="departure_date" required="" min="01.01.1901"
+                    max="31.12.2099" style="width:80%;">
+                    <p class="help-block" style="font-size:15px;">If you don't know the exact day, leave the day field empty.</p>
+                </div>
+                <div class="form-group has-feedback" style="width:420px;"><i class="form-control-feedback glyphicon glyphicon-star" aria-hidden="true"></i><label class="control-label" for="departure_place" style="font-size:20px;">Place of departure:</label><input class="form-control input-lg" type="text"
+                    name="departure_place" required="" placeholder="London, France, Australia..." maxlength="50" minlength="1" style="width:100%;"></div>
+                    <div class="form-group" style="font-size:20px;"><label class="control-label show" for="final_date" style="font-size:20px;">Final date (if known):</label><input class="form-control show visible-md-inline visible-lg-inline" type="number" name="final_day" placeholder="1" min="1"
+                        max="31" step="1" style="width:20%;"><input class="form-control show visible-md-inline visible-lg-inline" type="month" name="final_date" required="" min="01.01.1901" max="31.12.2099" style="width:80%;"></div>
+                        <div class="form-group"><label class="control-label" for="arrival_place" style="font-size:20px;width:420px;">Place of arrival or direction:</label><input class="form-control input-lg" type="text" name="arrival_place" placeholder="Madrid, China, South America..."
+                            maxlength="50" minlength="1" style="width:100%;">
+                            <div class="checkbox disabled"><label class="control-label" style="font-size:18px;"><input type="checkbox">Around the world </label></div><button class="btn btn-warning btn-block btn-lg" type="submit">Add a trip</button><button class="btn btn-info btn-block btn-lg"
+                            type="reset">Reset </button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% else %>
+        <table>
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>Where</th>
+              <th>Start date</th>
+              <th>Final date</th>
+              <th colspan="3"></th>
+          </tr>
+      </thead>
 
-<%= render "layouts/friends"%>
-<h1>Trips</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>From</th>
-      <th>Where</th>
-      <th>Start date</th>
-      <th>Final date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% if logged_in? %>
-	    <% @trips.each do |trip| %>
-	      <% if trip.owned_by? current_user%>
-			  <tr>
-			    <td><%= trip.from %></td>
-			    <td><%= trip.where %></td>
-			    <td><%= trip.start_date %></td>
-			    <td><%= trip.final_date %></td>
-			    <td><%= link_to 'Show', trip %></td>
-			    <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-			    <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			  </tr>
-	      <% end %>
-	    <% end %>
-	<% else %>
-		<% @trips.recent.each do |trip| %>
-				  <tr>
-					<td><%= trip.from %></td>
-					<td><%= trip.where %></td>
-					<td><%= trip.start_date %></td>
-					<td><%= trip.final_date %></td>
-					<td><%= link_to 'Show', trip %></td>
-					<td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-					<td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-				  </tr>
-		<% end %>
-	<% end %>    
-  </tbody>
+      <tbody>
+        <% @trips.recent.each do |trip| %>
+        <tr>
+         <td><%= trip.from %></td>
+         <td><%= trip.where %></td>
+         <td><%= trip.start_date %></td>
+         <td><%= trip.final_date %></td>
+         <td><%= link_to 'Show', trip %></td>
+     </tr>
+     <% end %>
+ </tbody>
 </table>
+<% end %>
 
-<br>
-
-<%= link_to 'New Trip', new_trip_path %>

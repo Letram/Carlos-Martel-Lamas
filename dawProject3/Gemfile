@@ -36,7 +36,7 @@ gem 'jquery-ui-rails'
 gem 'carrierwave'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-
+gem 'record_tag_helper', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

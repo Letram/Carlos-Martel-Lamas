@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  root to: "trips#index"
+  root to: "indices#index"
+  resources :indices
   resources :trips do
     resources :comments
 	resources :posts
   end
   resources :users do
-	resources :profiles
+	  resources :profiles
   end
   resource :session, only: [:new, :create, :destroy]
   get 'login' => "sessions#new", as: "login"

@@ -35,12 +35,15 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @user = current_user
     respond_to do |format|
       if @user.update(user_params)
+        @user.profile.update_attribute("profile_pic", @user.profile_pic)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
-        render action: :edit
+        format.html { render 'edit'} # Specify the format in which you are rendering the 'edit' page
+        format.json { render json: @user.errors } # If required, specify a json format as well
       end
     end
   end
@@ -54,6 +57,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :name, :age)
+      params.require(:user).permit(:email, :password, :password_confirmation, :name, :age, :profile_pic)
     end
 end

@@ -46,7 +46,7 @@ class TripsController < ApplicationController
     @trip = current_user.trips.find(params[:id])
     respond_to do |format|
       if @trip.update(trip_params)
-        format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
+        format.html { redirect_to trips_path }
         format.json { render :show, status: :ok, location: @trip }
       else
         format.html { render :edit }

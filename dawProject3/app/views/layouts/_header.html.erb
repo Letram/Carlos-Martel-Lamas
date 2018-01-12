@@ -7,9 +7,15 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
-                        <li class="active" role="presentation"><a href="#">Home </a></li>
+                        <li role="presentation"><%= link_to "Home", root_path%></li>
                         <li role="presentation"><a href="#">Help </a></li>
-                        <li role="presentation"><a href="#">My trips</a></li>
+                        <li role="presentation">
+                        <% if logged_in? %>
+                            <%= link_to "My trips", trips_path%>
+                        <% else %>
+                            <%= link_to "Some trips", trips_path%>
+                        <% end %>
+                        </li>
                     </ul>
                     <form class="navbar-form navbar-left" target="_self">
                         <div class="form-group">
