@@ -6,7 +6,7 @@ class Trip < ApplicationRecord
 	accepts_nested_attributes_for :trip_attachments
 	
 	validates :from, :where, presence: {message:"El campo no puede estar vacío."}
-  	scope :recent, ->{where("trips.start_date > ?", 6.months.ago).limit(3)}
+  	scope :recent, ->{where("trips.start_date > ?", 2.months.ago).limit(5)}
 
 	def owned_by?(owner)
 	    return false unless owner.is_a? User

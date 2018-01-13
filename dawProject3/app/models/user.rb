@@ -9,17 +9,14 @@ class User < ApplicationRecord
 	has_many :comments, through: :trips, source: :comments, dependent: :destroy
 	has_many :posts, through: :trips, source: :posts, dependent: :nullify
 	
-  	scope :recent_comments, ->{where("comments.created_at > ? AND user_id = ?", [6.months.ago, self.id]).limit(3)}
-	#friends
-	has_many :users
-
-    scope :some_friends, ->{users.limit(3)}
-
 	validates :email, uniqueness: {case_sensitive: false, message: 'El correo debe ser único'}, length: {in: 6..50, too_short: "debe tener al menos %{count} caracteres"}, format: {multiline: true,with: /^.+@.+$/, message: "formato de correo no valido"}
 
   	validates :password, confirmation: true, length: {within: 4..20}, presence: {if: :password_required?}
 	validates :password_confirmation, presence: true
 	
+  def recent_comments
+    Comment.where(user_id: self.id).order(:created_at).limit(4)
+  end
   def self.authenticate(email,password)
     user = find_by_email(email)
     return user if user && user.authenticated?(password)
@@ -41,6 +38,6 @@ class User < ApplicationRecord
     Digest::SHA1.hexdigest(string) 
   end
   def build_profile
-	Profile.create(user: self, name: self.name, bio:"Im using Tripper!")  
+	  Profile.create(user: self, name: self.name, bio:"Im using Tripper!")  
   end
 end

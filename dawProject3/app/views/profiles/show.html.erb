@@ -65,8 +65,8 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" role="tabpanel" id="tab-1">
                                         <ul class="thread-list" id="trip-list">
-											<% if current_user.trips.count > 0%>
-												<% (current_user.trips).each_with_index do |trip, index| %>
+											<% if @profile.user.trips.count > 0%>
+												<% (@profile.user.trips).each_with_index do |trip, index| %>
 			  										<li id='trip<%= Integer(index)+1%>' class="thread" style="color:rgb(0,0,0);">
 				                                        <span class="time"><%= trip.created_at.strftime("%b %d")%></span><span class="title" style="color:rgb(180,100,10);"><%= trip.from%> - <%= trip.where%></span>
 				                                        <i class="glyphicon glyphicon-plus tripIcon icons"></i>
@@ -182,69 +182,7 @@
                 <h1 class="text-center">Comments </h1></div>
             <div class="col-lg-12 col-md-12">
                 <div>
-					AQUI PONER LOS COMENTARIOS RECIENTES DEL USUARIO.
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user-item">
-                            <div class="user-container">
-                                <a href="#" class="user-avatar"><img class="img-circle img-responsive" src="Images/avatar.jpg" alt="Profile of Mark Smith Peterson" width="48" height="48"></a>
-                                <p class="user-name"><a href="#">Mark Smith Peterson</a><span>Last seen on 27th Sep 2014 </span></p>
-                                <a href="#" class="user-delete"> <i class="glyphicon glyphicon-remove"></i></a>
-                                <hr>
-                                <div>
-                                    <h4 style="color:rgb(57,34,0);">Comment title</h4>
-                                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien est, scelerisque a lectus eu, faucibus feugiat ligula. Quisque at ex consequat, congue nibh id, sodales nibh. Pellentesque aliquet malesuada purus
-                                        ut tristique. Donec dictum pharetra nunc at efficitur. Phasellus pharetra eu nisi vel tristique. Vivamus euismod scelerisque nisl vitae dapibus. Donec posuere lorem nec ex molestie tristique. Vestibulum ante ipsum
-                                        primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla ornare vel justo pretium aliquam. Etiam sodales diam ac lorem commodo, in placerat ligula mattis. Phasellus ut ante sit amet mauris egestas
-                                        rutrum sed ut tellus. Duis ultrices, velit id congue vestibulum, lorem purus hendrerit enim, ut feugiat dolor massa sit amet odio.&nbsp; </p>
-                                </div>
-                                <hr>
-                                <div>
-                                    <span style="padding-right:30px;">
-                                        <i id="thumbsUpIcon" class="glyphicon glyphicon-thumbs-up not-voted" style="font-size:30px;"></i>
-                                        <span class="count" style="font-size:18px;padding-left:5px;">40 </span>
-                                    </span>
-                                    <span style="padding-right:30px;">
-                                        <i id="thumbsDownIcon" class="glyphicon glyphicon-thumbs-down not-voted" style="font-size:30px;"></i>
-                                        <span class="count" style="font-size:18px;padding-left:5px;">5 </span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user-item">
-                            <div class="user-container">
-                                <a href="#" class="user-avatar"><img class="img-circle img-responsive" src="Images/avatar.jpg" alt="Profile of Mark Smith Peterson" width="48" height="48"></a>
-                                <p class="user-name"><a href="#">Mark Smith Peterson</a><span>Last seen on 27th Sep 2014 </span></p>
-                                <a href="#" class="user-delete"> <i class="glyphicon glyphicon-remove"></i></a>
-                                <hr>
-                                <div>
-                                    <h4 style="color:rgb(57,34,0);">Comment title</h4>
-                                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien est, scelerisque a lectus eu, faucibus feugiat ligula. Quisque at ex consequat, congue nibh id, sodales nibh. Pellentesque aliquet malesuada purus
-                                        ut tristique. Donec dictum pharetra nunc at efficitur. Phasellus pharetra eu nisi vel tristique. Vivamus euismod scelerisque nisl vitae dapibus. Donec posuere lorem nec ex molestie tristique. Vestibulum ante ipsum
-                                        primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla ornare vel justo pretium aliquam. Etiam sodales diam ac lorem commodo, in placerat ligula mattis. Phasellus ut ante sit amet mauris egestas
-                                        rutrum sed ut tellus. Duis ultrices, velit id congue vestibulum, lorem purus hendrerit enim, ut feugiat dolor massa sit amet odio.&nbsp; </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user-item">
-                            <div class="user-container">
-                                <a href="#" class="user-avatar"><img class="img-circle img-responsive" src="Images/avatar.jpg" alt="Profile of Mark Smith Peterson" width="48" height="48"></a>
-                                <p class="user-name"><a href="#">Mark Smith Peterson</a><span>Last seen on 27th Sep 2014 </span></p>
-                                <a href="#" class="user-delete"> <i class="glyphicon glyphicon-remove"></i></a>
-                                <hr>
-                                <div>
-                                    <h4 style="color:rgb(57,34,0);">Comment title</h4>
-                                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien est, scelerisque a lectus eu, faucibus feugiat ligula. Quisque at ex consequat, congue nibh id, sodales nibh. Pellentesque aliquet malesuada purus
-                                        ut tristique. Donec dictum pharetra nunc at efficitur. Phasellus pharetra eu nisi vel tristique. Vivamus euismod scelerisque nisl vitae dapibus. Donec posuere lorem nec ex molestie tristique. Vestibulum ante ipsum
-                                        primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla ornare vel justo pretium aliquam. Etiam sodales diam ac lorem commodo, in placerat ligula mattis. Phasellus ut ante sit amet mauris egestas
-                                        rutrum sed ut tellus. Duis ultrices, velit id congue vestibulum, lorem purus hendrerit enim, ut feugiat dolor massa sit amet odio.&nbsp; </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <%= render 'users/recent_comments'%>
                 </div>
             </div>
         </div>

@@ -19,9 +19,9 @@ User.create(
 User.all.each do |user|
 	user.trips.create(
 		[
-			{from: "spa", where: "ita"},
-			{from: "ing", where: "usa"},
-			{from: "rus", where: "ger"}
+			{from: "spa", where: "ita", start_date: 3.weeks.ago, final_date: 2.weeks.ago},
+			{from: "ing", where: "usa", start_date: 1.week.ago, final_date: 1.day.ago},
+			{from: "rus", where: "ger", start_date: 1.month.ago, final_date: 3.weeks.ago}
 		]
 	)
 end

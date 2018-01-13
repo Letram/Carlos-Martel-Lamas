@@ -1,0 +1,29 @@
+                    
+                    <% @profile.user.recent_comments.each do |comment|%>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user-item">
+                                <div class="user-container">
+                                    <a href="#" class="user-avatar"><%= image_tag comment.user.profile_pic, class:"img-circle img-responsive", size:"48x48"%></a>
+                                    <a href="#" class="user-delete"> <i class="glyphicon glyphicon-remove"></i></a>
+                                    <hr>
+                                    <div>
+                                        <h4 style="color:rgb(57,34,0);"><%= comment.title%> in <%= link_to "#{comment.trip.from}-#{comment.trip.where}", trip_path(comment.trip)%></h4>
+                                        <p class="text-justify">
+                                            <%= comment.body%>
+                                        </p>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <span style="padding-right:30px;">
+                                            <i id="thumbsUpIcon" class="glyphicon glyphicon-thumbs-up not-voted" style="font-size:30px;"></i>
+                                            <span class="count" style="font-size:18px;padding-left:5px;">40 </span>
+                                        </span>
+                                        <span style="padding-right:30px;">
+                                            <i id="thumbsDownIcon" class="glyphicon glyphicon-thumbs-down not-voted" style="font-size:30px;"></i>
+                                            <span class="count" style="font-size:18px;padding-left:5px;">5 </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
