@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>DawProject3</title>
-    <link rel="stylesheet" href="assets/css/styles.min.css">
-    <link rel="stylesheet" href="assets/css/variables.scss">
-    <link rel="stylesheet" href="assets/css/my-css.css">
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css', media: 'all' %>
-	<%= stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', media: 'all' %>
-	<%= stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css', media: 'all' %>
-	<%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Acme', media: 'all' %>
-	<%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Signika', media: 'all' %>
+    <%= stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css', media: 'all' %>
+    <%= stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', media: 'all' %>
+    <%= stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css', media: 'all' %>
+    <%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Acme', media: 'all' %>
+    <%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Signika', media: 'all' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-  <body>
-	<%= render "layouts/header"%>
+<body>
+    <%= render "layouts/header"%>
     <%= yield %>
-	<%= render "layouts/footer"%>
-  </body>
+    <%= render "layouts/footer"%>
+</body>
 </html>

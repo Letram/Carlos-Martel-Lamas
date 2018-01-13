@@ -1,0 +1,11 @@
+<%= form_with(model: @trip, local: true, :html =>{:multipart => true}) do |form| %>
+    <div class="field form-group has-feedback" style="font-size:20px;">
+        <%= form.label 'Fotos' %><br>
+        <%= form.file_field :photo, :multiple => true, name: "trip_attachments[photo][]" %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit "Upload!", :class => 'btn btn-info btn-block btn-lg' %>
+    </div>
+<% end %>
+

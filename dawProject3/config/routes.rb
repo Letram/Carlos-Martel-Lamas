@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :post_attachments
+  resources :trip_attachments
   root to: "indices#index"
   resources :indices
   resources :trips do

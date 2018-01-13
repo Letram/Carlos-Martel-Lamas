@@ -11,12 +11,14 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
-  redirect_to({action: :index}, notice: 'Viaje no encontrado') unless @trip
+   #redirect_to({action: :index}, notice: 'Viaje no encontrado') unless @trip
+    @trip_attachments = @trip.trip_attachments.all
   end
 
   # GET /trips/new
   def new
     @trip = Trip.new
+    @trip_attachment = @trip.trip_attachments.build
   end
 
   # GET /trips/1/edit
@@ -31,6 +33,9 @@ class TripsController < ApplicationController
     @trip = current_user.trips.new(trip_params)
     respond_to do |format|
       if @trip.save
+        params[:trip_attachments]['photo'].each do |photo|
+          @trip_attachment = @trip.trip_attachments.create!(:photo => photo)
+        end
         format.html { redirect_to trips_path, notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
@@ -74,6 +79,6 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.permit(:from, :where, :start_date, :final_date)
+      params.permit(:from, :where, :start_date, :final_date, trip_attachments_attributes: [:id, :trip_id, :photo])
     end
 end

@@ -1,6 +1,20 @@
-<%= div_for post do %> 
-  <h4>
-    <%= post.title %>
-  </h4>
-   <%= post.body %> 
-<% end %> 
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user-item">
+							<div class="user-container">
+								<p class="user-name"><%= post.trip.user.name%></p>
+								<hr>
+								<div>
+									<h4 style="color:rgb(57,34,0);"><%= post.title %></h4>
+									<p class='text-justify'>
+										<%= post.body%>
+									</p>
+								</div>
+								<div>
+									<% post.post_attachments.each do |p| %>
+  										<%= image_tag p.photo_url, size:'200x100'%>
+									<% end %>
+								</div>
+								<hr>
+							</div>
+						</div>
+					</div>

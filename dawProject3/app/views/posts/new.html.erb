@@ -1,16 +1,19 @@
-<h3>New Post</h3>
 <%= form_with(model: [@trip, @trip.posts.new], local: true) do |form| %>
-	  <div class="field">
+	  <div class="field form-group has-feedback" style="font-size:20px;">
 	    <%= form.label :title %>
 	    <%= form.text_field :title%>
 	  </div>
 
-	  <div class="field">
+	  <div class="field form-group has-feedback" style="font-size:20px;">
 	    <%= form.label :body %>
 	    <%= form.text_area :body %>
 	  </div>
 
+	      <div class="field form-group has-feedback" style="font-size:20px;">
+	        <%= form.label :photo %><br>
+	        <%= form.file_field :photo, :multiple => true, name: "post_attachments[photo][]" %>
+	      </div>
 	  <div class="actions">
-	    <%= form.submit %>
+	    <%= form.submit :class => 'btn btn-info btn-block btn-lg' %>
 	  </div>
 <% end %>

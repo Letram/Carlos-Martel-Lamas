@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Trip:</strong>
+  <%= @trip_attachment.trip_id %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @trip_attachment.photo %>
+</p>
+
+<%= link_to 'Edit', edit_trip_attachment_path(@trip_attachment) %> |
+<%= link_to 'Back', trip_attachments_path %>

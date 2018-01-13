@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Trip Attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Trip</th>
+      <th>Photo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trip_attachments.each do |trip_attachment| %>
+      <tr>
+        <td><%= trip_attachment.trip_id %></td>
+        <td><%= trip_attachment.photo %></td>
+        <td><%= link_to 'Show', trip_attachment %></td>
+        <td><%= link_to 'Edit', edit_trip_attachment_path(trip_attachment) %></td>
+        <td><%= link_to 'Destroy', trip_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trip Attachment', new_trip_attachment_path %>
