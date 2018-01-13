@@ -20,9 +20,6 @@
                                     <% end %>
                                 </ul>
                             </div>
-                            <div class="tab-pane" role="tabpanel" id="tab-2"></div>
-                            <div class="tab-pane" role="tabpanel" id="tab-3"></div>
-                            <div class="tab-pane" role="tabpanel" id="tab-4"></div>
                         </div>
                     </div>
                 </div>
@@ -31,21 +28,7 @@
         <div class="col-md-12" style="width:450px;">
             <h1 class="text-center">Add a trip</h1>
             <hr>
-            <form>
-                <div class="form-group has-feedback" style="font-size:20px;"><i class="form-control-feedback glyphicon glyphicon-star" aria-hidden="true"></i><label class="control-label show" for="departure_date" style="font-size:20px;">Departure date:</label><input class="form-control show visible-md-inline visible-lg-inline"
-                    type="number" name="departure_day" placeholder="1" min="1" max="31" step="1" style="width:20%;"><input class="form-control show visible-md-inline visible-lg-inline" type="month" name="departure_date" required="" min="01.01.1901"
-                    max="31.12.2099" style="width:80%;">
-                    <p class="help-block" style="font-size:15px;">If you don't know the exact day, leave the day field empty.</p>
-                </div>
-                <div class="form-group has-feedback" style="width:420px;"><i class="form-control-feedback glyphicon glyphicon-star" aria-hidden="true"></i><label class="control-label" for="departure_place" style="font-size:20px;">Place of departure:</label><input class="form-control input-lg" type="text"
-                    name="departure_place" required="" placeholder="London, France, Australia..." maxlength="50" minlength="1" style="width:100%;"></div>
-                    <div class="form-group" style="font-size:20px;"><label class="control-label show" for="final_date" style="font-size:20px;">Final date (if known):</label><input class="form-control show visible-md-inline visible-lg-inline" type="number" name="final_day" placeholder="1" min="1"
-                        max="31" step="1" style="width:20%;"><input class="form-control show visible-md-inline visible-lg-inline" type="month" name="final_date" required="" min="01.01.1901" max="31.12.2099" style="width:80%;"></div>
-                        <div class="form-group"><label class="control-label" for="arrival_place" style="font-size:20px;width:420px;">Place of arrival or direction:</label><input class="form-control input-lg" type="text" name="arrival_place" placeholder="Madrid, China, South America..."
-                            maxlength="50" minlength="1" style="width:100%;">
-                            <div class="checkbox disabled"><label class="control-label" style="font-size:18px;"><input type="checkbox">Around the world </label></div><button class="btn btn-warning btn-block btn-lg" type="submit">Add a trip</button><button class="btn btn-info btn-block btn-lg"
-                            type="reset">Reset </button></div>
-                        </form>
+              <%= render "new" %>
                     </div>
                 </div>
             </div>

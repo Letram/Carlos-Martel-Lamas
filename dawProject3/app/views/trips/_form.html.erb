@@ -1,37 +1,28 @@
-<%= form_with(model: @trip, local: true) do |form| %>
-  <% if @trip.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
-
-      <ul>
-      <% @trip.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_with(model: trip, local: true) do |form| %>
+    <div class="field form-group has-feedback" style="font-size:20px;">
+        <i class="form-control-feedback glyphicon glyphicon-star" aria-hidden="true"></i>
+        <%= form.label :from%>
+        <%= form.text_field :from, id: :trip_from %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :from %>
-    <%= form.text_field :from, id: :trip_from %>
-  </div>
+    <div class="field form-group has-feedback" style="font-size:20px;">
+        <i class="form-control-feedback glyphicon glyphicon-star" aria-hidden="true"></i>
+        <%= form.label :where %>
+        <%= form.text_field :where, id: :trip_where %>
+    </div>
 
-  <div class="field">
-    <%= form.label :where %>
-    <%= form.text_field :where, id: :trip_where %>
-  </div>
+    <div class="field form-group has-feedback" style="font-size:20px;">
+        <%= form.label :start_date %>
+        <%= form.date_select :start_date, id: :trip_start_date %>
+    </div>
 
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date, id: :trip_start_date %>
-  </div>
+    <div class="field form-group has-feedback" style="font-size:20px;">
+        <%= form.label :final_date %>
+        <%= form.date_select :final_date, id: :trip_final_date %>
+    </div>
 
-  <div class="field">
-    <%= form.label :final_date %>
-    <%= form.date_select :final_date, id: :trip_final_date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+        <%= form.submit "Add a new trip!", :class => 'btn btn-info btn-block btn-lg' %>
+    </div>
 <% end %>
+

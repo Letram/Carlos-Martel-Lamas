@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
+
   before_action :load_trip, except: :destroy
   before_action :authenticate, only: :destroy
+
   # GET /comments
   # GET /comments.json
   def index
@@ -25,11 +27,14 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = @trip.comments.new(comment_params)
+    @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
-        redirect_to @trip, notice: 'Comment was successfully created.' 
+        format.html { redirect_to @trip, notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @comment }
       else
-        redirect_to @trip, alert:"No ha sido posible enviar el comentario."
+        format.html { render :new }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,21 +59,20 @@ class CommentsController < ApplicationController
       @trip = current_user.trips.find_by_id(params[:trip_id])
     if @trip.nil?
        redirect_to :back, notice: "operación no permitida"
-     end
+    end
     @comment = @trip.comments.find_by_id(params[:id])
     @comment.destroy
     redirect_to @trip, notice: "comentario eliminado"
-    end
   end
 
   private
 
-    def load_article
-      @article = Article.find_by_id(params[:article_id])
+    def load_trip
+      @trip = Trip.find_by_id(params[:trip_id])
     end
     
     def comment_params
-      params.require(:comment).permit(:name, :email, :body)
+      params.require(:comment).permit(:title, :body)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_comment

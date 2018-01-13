@@ -1,0 +1,9 @@
+<%= div_for comment do %> 
+<div>
+	<h4>
+		<%= comment.title %>
+	</h4>
+	<p><%= comment.user.name%> said: </p>
+</div>
+<%= comment.body %> 
+<% end %> 

@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     helper_method :logged_in?
     
     def access_denied
-      redirect_to login_path, notice: "please log in to continue" and return
+      redirect_to login_path and return
     end
     
 end

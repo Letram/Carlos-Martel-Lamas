@@ -1,11 +1,6 @@
 <%= div_for post do %> 
-  <h3>
+  <h4>
     <%= post.title %>
-    <% if @trip.owned_by? current_user %> 
-      <span class="actions">
-         <%= link_to "delete",trip_post_path(trip_id: @trip, id: post), method: :delete, data: {confirm: "seguro?"} %> 
-      </span>
-     <% end %> 
-  </h3>
+  </h4>
    <%= post.body %> 
 <% end %> 

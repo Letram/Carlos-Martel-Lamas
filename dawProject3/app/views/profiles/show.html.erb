@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div style="background-color:rgba(0,0,0,0);">
         <div class="container" style="background-color:#ffffff;">
             <div class="row">
@@ -10,7 +9,7 @@
                             <% if %>
                                 <%= image_tag(@profile.profile_pic, size: "48x48") if @profile.profile_pic != nil %>
                             <% else %>
-                                <img class="avatar" src="Images/avatar.jpg" alt="avatar not loading">
+                                <%= image_tag('Images/avatar.jpg', size: "48x48", :class => 'avatar', :alt => 'User_avatar')%>
                             <% end %>
                             <% if current_user.id == @profile.user_id%>
                                 <%= link_to "Editar usuario", edit_user_path(current_user)%>
@@ -43,9 +42,11 @@
                         <div>
                             <button class="btn btn-info btn-block" type="button">Contact me!</button>
                         </div>
-                        <div>
-                            <%= link_to "Logout", logout_path, class:"btn btn-default navbar-btn navbar-right action-button", role:"button" %>
-                        </div>
+                        <% if current_user.id == @profile.user_id%>
+                            <div>
+                                <%= link_to "Logout", logout_path, class:"btn btn-default navbar-btn btn-block action-button", role:"button" %>
+                            </div>
+                        <% end %>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5" id="trips" style="background-color:#ffffff;">
@@ -61,12 +62,6 @@
                                 </div>
                             </form>
                             <div>
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab-1" role="tab" data-toggle="tab">Today <span class="badge">42</span></a></li>
-                                    <li><a href="#tab-2" role="tab" data-toggle="tab">Lastest <span class="badge">42</span></a></li>
-                                    <li><a href="#tab-3" role="tab" data-toggle="tab">Popular <span class="badge">42</span></a></li>
-                                    <li><a href="#tab-4" role="tab" data-toggle="tab">All <span class="badge">42</span></a></li>
-                                </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" role="tabpanel" id="tab-1">
                                         <ul class="thread-list" id="trip-list">
@@ -92,9 +87,6 @@
 											<% end %>
                                         </ul>
                                     </div>
-                                    <div class="tab-pane" role="tabpanel" id="tab-2"></div>
-                                    <div class="tab-pane" role="tabpanel" id="tab-3"></div>
-                                    <div class="tab-pane" role="tabpanel" id="tab-4"></div>
                                 </div>
                             </div>
                         </div>

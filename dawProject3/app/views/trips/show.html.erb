@@ -2,13 +2,20 @@
 
 <h3> POSTS </h3>
 <div  id="posts">
-  <%= render @trip.posts %> 
+	<%= render @trip.posts %> 
+	<% if @trip.owned_by? current_user %>
+	<%= render file:'posts/new' %> 
+	<% end %>
+</div>
+
+<div id="comments">
+	<%= render @trip.comments %>
+	<%= render file:'comments/new' %>
 </div>
 
 <% if @trip.owned_by? current_user %>
-	<%= render file:'posts/new' %> 
+<%= link_to 'Edit', edit_trip_path(@trip) %> |
 <% end %>
 
-<%= link_to 'Edit', edit_trip_path(@trip) %> |
 <%= link_to 'Back', trips_path %>
 
