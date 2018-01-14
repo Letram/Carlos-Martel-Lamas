@@ -1,0 +1,33 @@
+                    <% current_user.recent_posts.each do |post|%>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user-item">
+                                <div class="user-container">
+                                    <a href="#" class="user-avatar"><%= image_tag post.user.profile_pic, class:"img-circle img-responsive", size:"48x48"%></a>
+                                    <a href="#" class="user-delete"> <i class="glyphicon glyphicon-remove"></i></a>
+                                    <hr>
+                                    <div>
+                                        <h4 style="color:rgb(57,34,0);"><%= post.title%> in <%= link_to "#{post.trip.from}-#{post.trip.where}", trip_path(post.trip)%></h4>
+                                        <p class="text-justify">
+                                            <%= post.body%>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <% post.post_attachments.each do |p| %>
+                                            <%= image_tag p.photo_url, size:'200x100'%>
+                                        <% end %>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <span style="padding-right:30px;">
+                                            <i id="thumbsUpIcon" class="glyphicon glyphicon-thumbs-up not-voted" style="font-size:30px;"></i>
+                                            <span class="count" style="font-size:18px;padding-left:5px;">40 </span>
+                                        </span>
+                                        <span style="padding-right:30px;">
+                                            <i id="thumbsDownIcon" class="glyphicon glyphicon-thumbs-down not-voted" style="font-size:30px;"></i>
+                                            <span class="count" style="font-size:18px;padding-left:5px;">5 </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>

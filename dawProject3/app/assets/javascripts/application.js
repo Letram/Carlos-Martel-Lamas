@@ -18,4 +18,5 @@
 //= require jquery-ui/widgets/datepicker
 //= require scripts
 //= require AnimatedNumberElement
+//= require trips
 //= require_tree .

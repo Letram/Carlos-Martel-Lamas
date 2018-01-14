@@ -15,8 +15,13 @@ class User < ApplicationRecord
 	validates :password_confirmation, presence: true
 	
   def recent_comments
-    Comment.where(user_id: self.id).order(:created_at).limit(4)
+    Comment.where(user_id: self.id).order('created_at DESC').limit(4)
   end
+
+  def recent_posts
+    Post.where(user_id: self.id).order('created_at DESC').limit(5)
+  end
+
   def self.authenticate(email,password)
     user = find_by_email(email)
     return user if user && user.authenticated?(password)

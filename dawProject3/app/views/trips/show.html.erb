@@ -25,7 +25,9 @@
 	            <div class="col-lg-12 col-md-12">
 	                <div>
 	                    <%= render @trip.comments %>
-						<%= render file:'comments/new' unless @trip.owned_by? current_user %> 
+	                    <% if logged_in? %>
+							<%= render file:'comments/new' unless @trip.owned_by? current_user %> 
+						<% end %>
 					</div>
 				</div>
 			</div>

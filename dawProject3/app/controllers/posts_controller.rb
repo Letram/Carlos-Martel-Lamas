@@ -32,8 +32,10 @@ class PostsController < ApplicationController
     @post.user_id = @trip.user_id
     respond_to do |format|
       if @post.save
-        params[:post_attachments]['photo'].each do |photo|
-          @post_attachment = @post.post_attachments.create!(:photo => photo)
+        if params[:post_attachments] != nil
+          params[:post_attachments]['photo'].each do |photo|
+            @post_attachment = @post.post_attachments.create!(:photo => photo)
+          end
         end
         format.html { redirect_to @trip, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }

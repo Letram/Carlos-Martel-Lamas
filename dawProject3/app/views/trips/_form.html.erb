@@ -13,16 +13,16 @@
 
     <div class="field form-group has-feedback" style="font-size:20px;">
         <%= form.label :start_date %>
-        <%= form.date_select :start_date, id: :trip_start_date %>
+        <%= form.text_field :start_date, id: :trip_start_date, class: 'fecha' %>
     </div>
 
     <div class="field form-group has-feedback" style="font-size:20px;">
         <%= form.label :final_date %>
-        <%= form.date_select :final_date, id: :trip_final_date %>
+        <%= form.text_field :final_date, id: :trip_final_date, class: 'fecha' %>
     </div>
 
     <div class="actions">
-        <%= form.submit "Add a new trip!", :class => 'btn btn-info btn-block btn-lg' %>
+        <%= form.submit "Submit!", :class => 'btn btn-info btn-block btn-lg' %>
     </div>
 <% end %>
 
